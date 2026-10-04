@@ -1,0 +1,50 @@
+Rental Housing Law Navigator self-check. Not legal advice. This tool summarizes public housing law for information only.
+
+KB version 4: 85 rules, 24 no-rule findings; 85 exported (schema-valid)
+Quotes: 3710/4267 'applies' answers (86.9%) backed by a quote found verbatim in a corpus file; 557 rely on secondary sources
+
+Coverage matrix (rule ids | 'none' = no-rule finding | '--' = gap):
+  CA                 rent:r-0007,r-0008 | just:r-0004,r-0005,r-0006 | secu:r-0011 | appl:r-0003 | scre:r-0009,r-0010 | algo:r-0001,r-0002
+  Berkeley, CA       rent:r-0017 | just:r-0015,r-0016 | secu:r-0019 | appl:r-0014 | scre:r-0018 | algo:r-0012,r-0013
+  Los Angeles, CA    rent:r-0023 | just:r-0020,r-0021,r-0022 | secu:r-0025 | appl:none | scre:r-0024 | algo:none
+  San Diego, CA      rent:none | just:r-0028 | secu:none | appl:none | scre:r-0029 | algo:r-0026,r-0027
+  San Francisco, CA  rent:r-0032 | just:r-0031 | secu:r-0034 | appl:none | scre:r-0033 | algo:r-0030
+  Santa Ana, CA      rent:r-0038 | just:r-0037 | secu:none | appl:none | scre:none | algo:r-0035,r-0036
+  MA                 rent:r-0049,r-0050 | just:r-0045,r-0046,r-0047,r-0048 | secu:r-0052 | appl:r-0042,r-0043,r-0044 | scre:r-0051 | algo:r-0039,r-0040,r-0041
+  Boston, MA         rent:r-0055 | just:r-0053,r-0054 | secu:none | appl:none | scre:r-0056,r-0057 | algo:none
+  Cambridge, MA      rent:none | just:r-0059 | secu:none | appl:none | scre:r-0060 | algo:r-0058
+  NJ                 rent:r-0075,r-0076,r-0077,r-0078 | just:r-0064,r-0065,r-0066,r-0067,r-0068,r-0069,r-0070,r-0071,r-0072,r-0073,r-0074 | secu:r-0081,r-0082 | appl:r-0062,r-0063 | scre:r-0079,r-0080 | algo:r-0061
+  Hoboken, NJ        rent:none | just:none | secu:none | appl:none | scre:none | algo:r-0083
+  Jersey City, NJ    rent:r-0085 | just:none | secu:none | appl:none | scre:none | algo:r-0084
+
+Results per city at 2026-10-01:
+  Berkeley, CA       {'applies': 320, 'unknown': 400, 'pending': 40}
+  Boston, MA         {'pending': 300, 'unknown': 360, 'applies': 420}
+  Cambridge, MA      {'pending': 200, 'unknown': 300, 'applies': 300}
+  Hoboken, NJ        {'not_yet_effective': 40, 'applies': 480, 'unknown': 391}
+  Jersey City, NJ    {'not_yet_effective': 50, 'applies': 650, 'unknown': 500}
+  Los Angeles, CA    {'applies': 607, 'unknown': 648}
+  Newark, NJ         {'not_yet_effective': 50, 'applies': 550, 'unknown': 500}
+  San Diego, CA      {'applies': 300, 'unknown': 400, 'pending': 50}
+  San Francisco, CA  {'applies': 640, 'superseded': 80, 'unknown': 553}
+Missing facts behind unknowns: {'certificate_of_occupancy': 634, 'owner_occupied': 2370, 'owner_type': 1719, 'subsidized': 2145, 'new_construction_filing': 466, 'year_built': 506, 'units': 60}
+
+Change tests:
+  T1: PASS affected=250 conflicts=0 map={'CA-ALG-01': 'r-0001'}
+  T2: PASS affected=90 conflicts=90 map={'HOB-ALG-01': 'r-0083', 'JC-ALG-01': 'r-0084'}
+  T3: PASS affected=140 conflicts=90 map={'NJ-ALG-01': 'r-0061'}
+  T4: PASS affected=110 conflicts=0 map={'MA-ALG-P1': 'r-0041', 'MA-ALG-P2': 'r-0039'}
+  T5: PASS affected=0 conflicts=0 map={'MA-RENT-P1': 'r-0049'}
+  MA local rent caps reported as applies: 0 (must be 0)
+
+Geocoding: {'batch': 475, 'postal_fallback': 18, 'oneline': 7}; postal city != legal city: 38; low confidence: ['A0009', 'A0071', 'A0098', 'A0115', 'A0128', 'A0229', 'A0295', 'A0328', 'A0338', 'A0343', 'A0344', 'A0346', 'A0357', 'A0364', 'A0376', 'A0380', 'A0384', 'A0484']
+
+Known open questions (README section 9):
+  Berkeley algorithmic ban dates: r-0012 eff=2026-01 key=Recurring unit/month violations; private remedies conflict=False; r-0013 eff=None key=Sale, licensing or provision prohibited conflict=False
+  NJ FAIR Act vs local bans: r-0061 eff=2027-07-01 key=None conflict=True note=Possible conflict with r-0083: The state FAIR Act (P.L. 2026, c.43) says a municipality is prohibited from enacting an o
+  LA RSO formula dates: r-0023 eff=2020-03-30 key=0% (rent increases prohibited) conflict=True note=Sources give different effective dates: ['2020-01-01', '2020-03-30', '2022-01-01', '2025-07-01', '2026-02-02']
+  CA screening-fee cap figure: r-0003 eff=None key=7 days conflict=False
+
+LLM calls by stage: {'audit': 286, 'consolidate': 50, 'coverage': 85, 'extract': 88}; tokens in/out: 4769907/723861
+Candidates: 295; verification decisions: {'verified': 327}
+Knowledge base builds (provider/model): v1: anthropic/claude-opus-5-5; v2: anthropic/claude-opus-5-5; v3: anthropic/claude-sonnet-5-5; v4: anthropic/claude-sonnet-5-5

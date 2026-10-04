@@ -1,0 +1,13 @@
+.venv
+.git
+frontend/node_modules
+web/dist
+data/*
+!data/release.db
+starter_pack
+starter
+supplementary
+output
+tests
+**/__pycache__
+.env
