@@ -1,0 +1,10 @@
+# One-click deploy on Render (free plan, no API keys needed):
+# https://render.com/deploy?repo=https://github.com/AkashDeepSinghJassal/rental-law-navigator
+services:
+  - type: web
+    name: rental-law-navigator
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    autoDeploy: true

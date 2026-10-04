@@ -112,6 +112,15 @@ npm run dev                                    # dev server with /api proxied to
 npx vitest run                                 # domain logic tests (calculator parsers, timeline)
 ```
 
+## Deploy
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/AkashDeepSinghJassal/rental-law-navigator)
+
+The `Dockerfile` builds the React UI and serves it with FastAPI and the knowledge base in `data/release.db`
+(no API keys needed at runtime). Render: use the button above (`render.yaml`, free plan). Fly.io:
+`fly launch --copy-config --no-deploy && fly deploy` (`fly.toml`). Rebuild the release database after a new
+knowledge-base build with `python scripts/make_release_db.py`.
+
 ## Known limits
 
 * Rules come only from the supplied corpus (54 text documents). Key texts that are link-only (for example several

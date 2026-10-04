@@ -24,4 +24,5 @@ ENV PATH="/app/.venv/bin:$PATH" \
     LLM_PROVIDER=anthropic \
     NAVIGATOR_OFFLINE=0
 EXPOSE 8080
-CMD ["uvicorn", "web.app:app", "--host", "0.0.0.0", "--port", "8080", "--proxy-headers", "--forwarded-allow-ips", "*"]
+# PORT is set by Render/most hosts; Fly uses 8080 (fly.toml internal_port)
+CMD ["sh", "-c", "uvicorn web.app:app --host 0.0.0.0 --port ${PORT:-8080} --proxy-headers --forwarded-allow-ips '*'"]
