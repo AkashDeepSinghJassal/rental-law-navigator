@@ -5,8 +5,13 @@ import { MapView } from "./MapView";
 export function BuildingCard({ data }: { data: Lookup }) {
   const { t } = usePrefs();
   const f = data.facts;
-  const units =
-    f.units ?? (f.units_min || f.units_max ? `${f.units_min ?? "?"}${f.units_max ? `–${f.units_max}` : "+"}` : null);
+  const range =
+    f.units_min && f.units_min === f.units_max
+      ? String(f.units_min)
+      : f.units_min || f.units_max
+        ? `${f.units_min ?? "?"}${f.units_max ? `–${f.units_max}` : "+"}`
+        : null;
+  const units = f.units ?? range;
   const unitsDerived = !f.units && units != null;
   const fact = (k: string, v: string | number | null | undefined, note?: string | false) => (
     <div className="fact">
